@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+sqlalchemy
+web3
+py-solc-x
+setuptools
