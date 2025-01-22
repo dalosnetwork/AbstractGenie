@@ -24,7 +24,7 @@ class Contract():
 
                 # Transaction'ı bekle ve kontrat adresini al
                 receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-                contract_address = receipt.contractAddress
+                contract_address = receipt.contract_address
 
                 # Kontrat adını ve adresini kaydet
                 deployed_contracts[contract_names[i]] = contract_address
@@ -67,7 +67,7 @@ class Contract():
                 # Constructor parametrelerini encode etme
                 constructor_params = constructor_params_list[idx] if idx < len(constructor_params_list) else {}
                 contract = web3.eth.contract(abi=abi, bytecode=bytecode)
-                encoded_bytecode = contract.constructor(**constructor_params).buildTransaction({})["data"]
+                encoded_bytecode = contract.constructor(**constructor_params).build_transaction({})["data"]
 
                 # Kombine bytecode oluşturma
                 combined_bytecode += encoded_bytecode[2:]  # "0x" kısmını çıkarıyoruz
@@ -87,7 +87,7 @@ class Contract():
             web3 = Web3(Web3.HTTPProvider(provider))
 
             # Kontrat instansı oluştur
-            contract = web3.eth.contract(address=web3.toChecksumAddress(contract_address), abi=abi)
+            contract = web3.eth.contract(address=web3.to_checksum_address(contract_address), abi=abi)
 
             # Fonksiyon çağrısı için bytecode oluştur
             if not hasattr(contract.functions, function_name):
@@ -113,7 +113,7 @@ class Contract():
                 tx_hash = web3.eth.send_raw_transaction(bytes.fromhex(signed_bytecode))
 
                 # Transaction hash'i kaydet
-                transaction_hashes.append(web3.toHex(tx_hash))
+                transaction_hashes.append(web3.to_hex(tx_hash))
             except Exception as e:
                 transaction_hashes.append(f"Error for bytecode {signed_bytecode[:10]}: {str(e)}")
 
