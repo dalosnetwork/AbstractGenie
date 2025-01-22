@@ -20,7 +20,7 @@ A Python library for managing and deploying smart contracts aligned with the ERC
    ```bash
    pip install AbstractGenie
 
-## Usage
+2. Import package
    ```bash
    from AbstractGenie import abstract_genie
 
