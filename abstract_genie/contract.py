@@ -4,14 +4,14 @@ from solcx import compile_source
 
 class Contract():
     @staticmethod
-    def deploy_multiple_contracts(signed_bytecodes, contract_names):
+    def deploy_multiple_contracts(signed_bytecodes, contract_names, provider):
         """
         Birden fazla kontratın imzalanmış bytecode'unu deploy eder ve adreslerini döndürür.
         :param signed_bytecodes: İmzalanmış bytecode'ların listesi.
         :param contract_names: Kontratların isimlerinin listesi.
         :return: {contractName: contractAddress} formatında bir sözlük.
         """
-        web3 = Web3(Web3.HTTPProvider("PROVIDER"))  # TODO: Sağlayıcı URL'si
+        web3 = Web3(Web3.HTTPProvider(provider))
         deployed_contracts = {}
 
         try:
@@ -41,8 +41,7 @@ class Contract():
             }
 
     @staticmethod
-    def generate_bytecode(contract_names, constructor_params_list, contracts_directory="./contracts",
-                                   provider="https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"):
+    def generate_bytecode(contract_names, constructor_params_list, provider, contracts_directory="./contracts"):
         try:
             combined_bytecode = "0x"
             web3 = Web3(Web3.HTTPProvider(provider))
@@ -80,12 +79,12 @@ class Contract():
             return False
 
     @staticmethod
-    def generate_function_call_bytecode(contract_address, function_name, params, abi):
+    def generate_function_call_bytecode(contract_address, function_name, params, abi, provider):
         """
            Bir kontrat fonksiyonunu çalıştırmak için gerekli bytecode'u döner.
            """
         try:
-            web3 = Web3(Web3.HTTPProvider("PROVIDER"))  # TODO: Sağlayıcı URL'si
+            web3 = Web3(Web3.HTTPProvider(provider))
 
             # Kontrat instansı oluştur
             contract = web3.eth.contract(address=web3.toChecksumAddress(contract_address), abi=abi)
@@ -103,8 +102,8 @@ class Contract():
             return False
 
     @staticmethod
-    def deploy_signed_bytecodes(signed_bytecodes):
-        web3 = Web3(Web3.HTTPProvider("PROVIDER"))  # TODO: Sağlayıcı URL'si
+    def deploy_signed_bytecodes(signed_bytecodes, provider):
+        web3 = Web3(Web3.HTTPProvider(provider))
 
         transaction_hashes = []
 
