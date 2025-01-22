@@ -20,6 +20,10 @@ A Python library for managing and deploying smart contracts aligned with the ERC
    ```bash
    pip install AbstractGenie
 
+## Usage
+   ```bash
+   from AbstractGenie import abstract_genie
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
