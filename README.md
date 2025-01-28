@@ -25,7 +25,7 @@ A Python library for managing and deploying smart contracts aligned with the ERC
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
-Email: alibertay@gmail.com
+Email: alibertay@dalosnetwork.com
 
 ## PyPI
 https://pypi.org/project/abstract-genie/
