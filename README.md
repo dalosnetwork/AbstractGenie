@@ -18,14 +18,14 @@ A Python library for managing and deploying smart contracts aligned with the ERC
 
 1. Install AbstractGenie from PyPI:
    ```bash
-   pip install AbstractGenie
+   pip install abstract_genie
 
-2. Import package
-   ```bash
-   from AbstractGenie import abstract_genie
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
 Email: alibertay@gmail.com
+
+## PyPI
+https://pypi.org/project/abstract-genie/
